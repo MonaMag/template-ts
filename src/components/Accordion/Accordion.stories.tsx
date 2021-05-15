@@ -57,7 +57,7 @@ export const ModeChanging = () => {
                         {title: 'Kira', value: 4}
                     ]}
                     onClick={(value) => {
-                        alert(`user with ID ${value} should be happy`)
+                        alert(`user with id ${value} should be happy`)
                     }}
   />
 }

@@ -1,43 +1,66 @@
 import React from 'react';
 
-type AccordionPropsType = {
-  titleValue: string
-  collapsed: boolean
-  onChange: () => void
+
+export type ItemsType = {
+    title: string
+    value: any
 }
 
-function Accordion(props: AccordionPropsType) {
-  console.log("Accordion rendering")
-  return (
-    <div>
-      <AccordionTitle title={props.titleValue} onChange={props.onChange}/>
-      {!props.collapsed && <AccordionBody/>}
-    </div>
-  );
+export type AccordionPropsType = {
+    titleValue: string
+    collapsed: boolean
+    onChange: () => void
+    /**
+     * Elements that are showed when accordion is opened (not collapsed)
+     */
+    items: Array<ItemsType> //ItemsType[]
+    onClick: (value: any) => void
 }
 
-  type AccordionTitlePropsType = {
+
+export function Accordion(props: AccordionPropsType) {
+    console.log("Accordion rendering")
+    return (
+        <div>
+            <AccordionTitle title={props.titleValue}
+                            onChange={props.onChange}/>
+            {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+        </div>
+    );
+}
+
+type AccordionTitlePropsType = {
     title: string
     onChange: () => void
-  }
+}
 
-  function AccordionTitle(props: AccordionTitlePropsType) {
+function AccordionTitle(props: AccordionTitlePropsType) {
     console.log("AccordionTitle rendering")
     return (
-      <h3 onClick={ () => {props.onChange()}}>{props.title}</h3>
+        <h3 onClick={() => {
+            props.onChange()
+        }}>{props.title}</h3>
     );
-  }
+}
 
+type AccordionBodyPropsType = {
+    items: ItemsType[]
+    onClick: (value: any) => void
+}
 
-  function AccordionBody() {
+function AccordionBody(props: AccordionBodyPropsType) {
     console.log("AccordionBody rendering")
     return (
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
+        <div>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                {props.items.map((i, index) => <li key={index}
+                    onClick={() => props.onClick(i.value)}>{i.title}</li>
+                    )}
+            </ul>
+        </div>
     )
-  }
+}
 
-  export default Accordion;

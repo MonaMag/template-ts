@@ -1,0 +1,68 @@
+.wrapper {
+    width: 100px;
+    margin: 40px;
+    position: relative;
+}
+
+.wrapper ul {
+    width: 100%;
+    padding: 3px;
+    list-style: none;
+    margin: 2px 0;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+}
+
+.title {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    padding: 3px;
+    border: 1px #333 solid;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.title:hover {
+    background-color: coral;
+}
+
+.tick {
+    position: absolute;
+    top: 22%;
+    right: 10%;
+    width: 6px;
+    height: 8px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate( 45deg);
+}
+
+.li {
+    width: 90%;
+    cursor: pointer;
+    padding: 3px;
+    border: 1px #333 solid;
+    text-align: center;
+    margin: 0 auto 2px;
+    transition: 0.3s;
+}
+
+.active {
+    background-color: peachpuff;
+}
+
+.li:hover {
+    background-color: papayawhip;
+}
+
+
+
+
+
+
+
+
+
+

@@ -7,67 +7,32 @@ export type ItemsType = {
 }
 
 export type SelectPropsType = {
-    title: any
-    selectItems: ItemsType[]
+    value?: any
     onChange: (selectItems: ItemsType) => void
+    selectItems: ItemsType[]
 }
 
 
 export function Select(props: SelectPropsType) {
-    console.log('Select Rendering')
+    const selectedItem = props.selectItems.find(i => i.value === props.value)
 
-    const [active, setActive] = useState(false);
 
-    function onSelectItemClick(value: any, title: string) {
-        props.onChange({title: title, value: value})
-    }
+        return (
+        <div className={s.select}>
 
-    function onKeyPressInTitle(e: KeyboardEvent<HTMLDivElement>) {
-        if (e.keyCode === 40) {
-            if (props.title.value === 'none') {
-                props.onChange(props.selectItems[0])
-                return
-            }
-            for (let i = 0; i < props.selectItems.length; i++) {
-                if (props.selectItems[i].title === props.title.title && i !== props.selectItems.length - 1) {
-                    props.onChange(props.selectItems[i + 1])
-                    return
-                }
-            }
-        } else if (e.keyCode === 38) {
-            for (let i = 0; i < props.selectItems.length; i++) {
-                if (props.selectItems[i].title === props.title.title && i !== 0) {
-                    props.onChange(props.selectItems[i - 1])
-                    return
-                }
-            }
-        }
-        if (e.keyCode === 13 || e.keyCode === 27) {
-            e.keyCode === 13 ?  setActive(!active) :  setActive(true)
-        }
-    }
+            <select>
+                <option value="">Moscow</option>
+                <option value="">London</option>
+                <option value="">Rome</option>
+            </select>
 
-    function onTitleBlurEffect() {
-        setTimeout(() =>  setActive(true), 200)
-    }
-
-    return (
-        <div className={s.wrapper}>
-            <div className={s.title}
-                 onClick={() => setActive(!active)}
-                 onBlur={onTitleBlurEffect}
-                 onKeyDown={onKeyPressInTitle}
-                 tabIndex={0}>
-                {props.title.title}
-                <div className={s.tick}/>
+            <div className={s.title}>
+                {selectedItem && selectedItem.title}
             </div>
-            {!active && <ul>
-                {props.selectItems.map((op, index) => <li
-                    className={s.li + ' ' + (op.title === props.title.title ? s.active : '')}
-                    onClick={() =>  onSelectItemClick(op.value, op.title)}
-                    key={index}>{op.title}</li>)}
-            </ul>}
 
+            <div className={s.item}>
+            {props.selectItems.map((i) => <div key={i.value}>{i.title}</div>)}
+            </div>
         </div>
 
     )

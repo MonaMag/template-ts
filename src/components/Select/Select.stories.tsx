@@ -8,6 +8,7 @@ export default {
     component: Select,
 } as Meta
 
+
 /*
 
 const callback = action("select mode change event fired");
@@ -17,23 +18,36 @@ const Template: Story<SelectPropsType> = (args) => <Select{...args} />;
 
 export const SelectMode = Template.bind({})
 SelectMode.args = {
-    title: '',
+    value: '',
     selectItems: [],
     onChange: callback
 }
 */
 
+export const WithValue = () =>
+    <>
+        <Select onChange={action('Value changed')}
+                value={'2'}
+                selectItems={[
+                    {title: 'Moscow', value: 1},
+                    {title: 'London', value: 2},
+                    {title: 'Rome', value: 3},
+                    {title: 'Madrid', value: 4},
+                    {title: 'Dublin', value: 4}
+                ]}/>
 
-const selectItems: ItemsType[] = [
-    {title: 'Moscow', value: 1},
-        {title: 'London', value: 2},
-        {title: 'Rome', value: 3},
-        {title: 'Madrid', value: 4},
-        {title: 'Dublin', value: 4}
-]
 
-export const Controlled = () => {
-    const [currentChoice, setCurrentChoice] = useState<ItemsType>({title: 'City', value: 'none'})
-    return <Select title={currentChoice} selectItems={selectItems} onChange={setCurrentChoice}/>
-}
+        </>
 
+
+export const WithoutValue = () =>
+    <>
+        <Select onChange={action('Value changed')}
+                selectItems={[
+                    {title: 'Moscow', value: 1},
+                    {title: 'London', value: 2},
+                    {title: 'Rome', value: 3},
+                    {title: 'Madrid', value: 4},
+                    {title: 'Dublin', value: 4}
+                ]}/>
+    </>

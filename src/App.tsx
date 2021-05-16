@@ -6,8 +6,9 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
 import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
-import {on} from "cluster";
+import {MySelect} from "./components/MySelect/MySelect";
 import {Select} from "./components/Select/Select";
+
 
 
 function App() {
@@ -31,10 +32,10 @@ function App() {
         {title: 'Madrid', value: 4},
         {title: 'Dublin', value: 4},
     ]
-    const [selectedItem, setSelectedItem] = useState({title: 'City', value: 'none'});
+    const [chosenItem, setChosenItem] = useState({title: 'City', value: 'none'});
     const onChangeSelectedItem = (selectItems: ItemsType) => {
-        alert(`title is ${selectItems.title} and value id is ${selectItems.value}`)
-        setSelectedItem(selectItems);
+        alert(`selected ${selectItems.title} with value ${selectItems.value}`)
+        setChosenItem(selectItems);
     }
     // ============================================>
 
@@ -48,13 +49,13 @@ function App() {
                            setAccordionCollapsed(!accordionCollapsed)
                        }}
                        items={accordionItems} onClick={onClick}/>
-            <Select title={selectedItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
-
+            <MySelect title={chosenItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
 
             <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             <UncontrolledAccordion titleValue={"Menu"}/>
             <UncontrolledRating onChange={setRatingValue}/>
 
+            <Select value={chosenItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
         </div>
     );
 }

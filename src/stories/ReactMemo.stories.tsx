@@ -4,13 +4,17 @@ export default {
     title: 'React.memo demo'
 }
 
-const NewMessagesCounter = (props: any) => {
+
+const Counter = (props: { count: number}) => {
     return <div>{props.count}</div>
 }
 
+
+/*type UsersType = { user: Array<string>}*/
+
 const UsersSecret = (props: { users: Array<string> }) => {
     return <div>
-        {props.users.map((u, i) => <div>{u}</div>)}
+        {props.users.map((u, i) => <div key={i}>{u}</div>)}
     </div>
 }
 
@@ -27,7 +31,7 @@ export const Example = () => {
     return <>
         <button onClick={() => setCounter(counter + 1)}>+</button>
         <button onClick={addUser}>add user</button>
-        <NewMessagesCounter count={counter}/>
+        <Counter count={counter}/>
         <Users users={users}/>
     </>
 }

@@ -9,7 +9,6 @@ export default {
 } as Meta
 
 /*
-
 const callback = action("select mode change event fired");
 
 const Template: Story<SelectPropsType> = (args) => <Select{...args} />;
@@ -34,7 +33,7 @@ const selectItems: ItemsType[] = [
 
 export const Controlled = () => {
     const [currentChoice, setCurrentChoice] = useState<ItemsType>({title: 'City', value: 'none'})
-    return <MySelect title={currentChoice} selectItems={selectItems} onChange={setCurrentChoice}/>
+    return <MySelect item={currentChoice} selectItems={selectItems} onChange={setCurrentChoice}/>
 }
 
 

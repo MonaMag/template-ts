@@ -26,23 +26,22 @@ SelectMode.args = {
 
 export const WithValue = () =>
     <>
-        <Select onChange={action('Value changed')}
-                value={'2'}
+        <Select onChangeChoice={action('Value changed')}
                 selectItems={[
                     {title: 'Moscow', value: 1},
                     {title: 'London', value: 2},
                     {title: 'Rome', value: 3},
                     {title: 'Madrid', value: 4},
-                    {title: 'Dublin', value: 4}
-                ]}/>
-
-
-        </>
+                    {title: 'Dublin', value: 5}
+                ]}
+                item={{title: 'Kiev', value: 6}}/>
+    </>
 
 
 export const WithoutValue = () =>
     <>
-        <Select onChange={action('Value changed')}
+        <Select onChangeChoice={action('Value changed')}
+                item={{title: 'Kiev', value: 6}}
                 selectItems={[
                     {title: 'Moscow', value: 1},
                     {title: 'London', value: 2},

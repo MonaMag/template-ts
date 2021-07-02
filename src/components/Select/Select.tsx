@@ -7,24 +7,25 @@ export type ItemsType = {
 }
 
 export type SelectPropsType = {
-    value?: any
-    onChange: (selectItems: ItemsType) => void
+    item: ItemsType
     selectItems: ItemsType[]
+    onChangeChoice: (selectItem: ItemsType) => void
+
 }
 
 
 export function Select(props: SelectPropsType) {
-    const selectedItem = props.selectItems.find(i => i.value === props.value)
+    const selectedItem = props.selectItems.find(i => i.value === props.item.value)
 
 
         return (
         <div className={s.select}>
 
-            <select>
+         {/*   <select>
                 <option value="">Moscow</option>
                 <option value="">London</option>
                 <option value="">Rome</option>
-            </select>
+            </select>*/}
 
             <div className={s.title}>
                 {selectedItem && selectedItem.title}

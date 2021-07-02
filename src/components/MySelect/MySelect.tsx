@@ -7,9 +7,9 @@ export type ItemsType = {
 }
 
 export type SelectPropsType = {
-    title: any
+    item: ItemsType
     selectItems: ItemsType[]
-    onChange: (selectItems: ItemsType) => void
+    onChange: (selectItem: ItemsType) => void
 }
 
 
@@ -24,19 +24,19 @@ export function MySelect(props: SelectPropsType) {
 
     function onKeyPressInTitle(e: KeyboardEvent<HTMLDivElement>) {
         if (e.keyCode === 40) {
-            if (props.title.value === 'none') {
+            if (props.item.value === 'none') {
                 props.onChange(props.selectItems[0])
                 return
             }
             for (let i = 0; i < props.selectItems.length; i++) {
-                if (props.selectItems[i].title === props.title.title && i !== props.selectItems.length - 1) {
+                if (props.selectItems[i].title === props.item.title && i !== props.selectItems.length - 1) {
                     props.onChange(props.selectItems[i + 1])
                     return
                 }
             }
         } else if (e.keyCode === 38) {
             for (let i = 0; i < props.selectItems.length; i++) {
-                if (props.selectItems[i].title === props.title.title && i !== 0) {
+                if (props.selectItems[i].title === props.item.title && i !== 0) {
                     props.onChange(props.selectItems[i - 1])
                     return
                 }
@@ -58,12 +58,12 @@ export function MySelect(props: SelectPropsType) {
                  onBlur={onTitleBlurEffect}
                  onKeyDown={onKeyPressInTitle}
                  tabIndex={0}>
-                {props.title.title}
+                {props.item.title}
                 <div className={s.tick}/>
             </div>
             {!collapsed && <ul>
                 {props.selectItems.map((op, index) => <li
-                    className={s.li + ' ' + (op.title === props.title.title ? s.active : '')}
+                    className={s.li + ' ' + (op.title === props.item.title ? s.active : '')}
                     onClick={() =>  onSelectItemClick(op.value, op.title)}
                     key={index}>{op.title}</li>)}
             </ul>}

@@ -33,9 +33,9 @@ function App() {
         {title: 'Dublin', value: 4},
     ]
     const [chosenItem, setChosenItem] = useState({title: 'City', value: 'none'});
-    const onChangeSelectedItem = (selectItems: ItemsType) => {
-        alert(`selected ${selectItems.title} with value ${selectItems.value}`)
-        setChosenItem(selectItems);
+    const onChangeSelectedItem = (selectItem: ItemsType) => {
+        alert(`selected ${selectItem.title} with value id ${selectItem.value}`)
+        setChosenItem(selectItem);
     }
     // ============================================>
 
@@ -49,13 +49,13 @@ function App() {
                            setAccordionCollapsed(!accordionCollapsed)
                        }}
                        items={accordionItems} onClick={onClick}/>
-            <MySelect title={chosenItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
+            <MySelect item={chosenItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
 
             <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             <UncontrolledAccordion titleValue={"Menu"}/>
             <UncontrolledRating onChange={setRatingValue}/>
 
-            <Select value={chosenItem} selectItems={selectItems} onChange={onChangeSelectedItem}/>
+            <Select item={chosenItem} selectItems={selectItems} onChangeChoice={onChangeSelectedItem}/>
         </div>
     );
 }

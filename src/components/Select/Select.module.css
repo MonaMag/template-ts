@@ -2,3 +2,8 @@
     margin: 20px;
 
 }
+
+.title {
+    border: 2px solid cyan;
+    width: 80px;
+}

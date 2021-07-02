@@ -25,15 +25,18 @@ SelectMode.args = {
 
 const selectItems: ItemsType[] = [
     {title: 'Moscow', value: 1},
-        {title: 'London', value: 2},
-        {title: 'Rome', value: 3},
-        {title: 'Madrid', value: 4},
-        {title: 'Dublin', value: 4}
+    {title: 'London', value: 2},
+    {title: 'Rome', value: 3},
+    {title: 'Madrid', value: 4},
+    {title: 'Dublin', value: 4}
 ]
 
 export const Controlled = () => {
-    const [currentChoice, setCurrentChoice] = useState<ItemsType>({title: 'City', value: 'none'})
-    return <MySelect item={currentChoice} selectItems={selectItems} onChange={setCurrentChoice}/>
+    const [currentChoice, setCurrentChoice] = useState<ItemsType>({title: 'City', value: 'none'});
+
+    return <MySelect item={currentChoice}
+                     selectItems={selectItems}
+                     onChange={setCurrentChoice}/>
 }
 
 

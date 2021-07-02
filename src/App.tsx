@@ -13,6 +13,7 @@ import {Select} from "./components/Select/Select";
 
 function App() {
     console.log("App rendering")
+
     const accordionItems: Array<ItemsType> = [
         {title: 'Hanna', value: 1},
         {title: 'Mona', value: 2},

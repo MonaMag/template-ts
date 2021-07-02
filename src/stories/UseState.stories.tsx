@@ -3,7 +3,7 @@ import {Meta} from "@storybook/react";
 
 export default {
     title: 'useState demo'
-    //component: ReactMemo
+
 } as Meta
 
 function generateData() {

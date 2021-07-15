@@ -39,8 +39,8 @@ export const SimpleExample = () => {
 
     return <>
         Hello, {counter}
-        <button onClick={() => setFake(fake + 1)}>+</button>
-        <button onClick={() => setCounter(counter + 1)}>+</button>
+        <button onClick={() => setFake(fake + 1)}>fake+</button>
+        <button onClick={() => setCounter(counter + 1)}>counter+</button>
     </>
 }
 
@@ -49,3 +49,37 @@ export const SimpleExample = () => {
 //Если мы не передали ничего в зависимости (вообще ничего), то useEffect запускается при каждом рендере компоненты
 // если предаем конкретную зависимость - то он срабатывает первый раз и потом только при смнене зависимости (counter)
 // если передали пустой массив [] - useEffect сработает ровно один раз при вмонтировании компоненты, при изменении компоненты он срабатывать не будет
+
+
+
+
+export const SetTimeoutExample = () => {
+    const [fake, setFake] = useState(1);
+    const [counter, setCounter] = useState(0);
+
+    console.log('SetTimeoutExample');
+
+    useEffect(() => {
+        setTimeout( () => {
+            console.log('setTimout')
+            document.title = counter.toString();
+        }, 1000);
+
+    }, [counter])
+
+
+    useEffect(() => {
+        setInterval( () => {
+            console.log('tick:' + counter);
+            setCounter( (state) => state + 1);
+        }, 1000);
+
+    }, [])
+
+    return <>
+        Hello, counter: {counter} - fake: {fake}
+        <button onClick={() => setFake(fake + 1)}>+</button>
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+
+    </>
+}

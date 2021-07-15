@@ -1,15 +1,18 @@
-import {Meta, } from "@storybook/react";
-import React, {useEffect, useState} from "react";
-import {Clock, PropsType} from "./Clock";
+import {Meta, } from '@storybook/react';
+import React from "react";
+import {Clock} from "./Clock";
 
 export default {
     title: 'Clock',
     component: Clock,
 } as Meta
 
-export const BaseExample = () => {
+export const BaseAnalogExample = () => {
     //const [data, setData] = useState(new Date());
+    return <Clock mode={'analog'}/>
+}
 
-
-    return <Clock />
+export const BaseDigitalExample = () => {
+    //const [data, setData] = useState(new Date());
+    return <Clock mode={'digital'}/>
 }
